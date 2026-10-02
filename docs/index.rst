@@ -31,6 +31,7 @@ potential issues.
 
     ./user/quickstart.rst
     ./user/settings.rst
+    ./user/dhcp-snooping.rst
     ./user/debugging.rst
 
 .. toctree::

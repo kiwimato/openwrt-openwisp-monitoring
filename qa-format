@@ -6,6 +6,7 @@ shfmt -w -l --apply-ignore .
 shfmt -w -l openwisp-monitoring/files/monitoring.agent
 shfmt -w -l openwisp-monitoring/files/monitoring.init
 shfmt -w -l openwisp-monitoring/files/openwisp-monitoring.hotplug
+shfmt -w -l openwisp-monitoring/files/dhcp-snooping.init
 
 openwisp-qa-format
 

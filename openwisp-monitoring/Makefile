@@ -37,6 +37,21 @@ define Package/netjson-monitoring
 	URL:=http://openwisp.org
 endef
 
+define Package/openwisp-monitoring-dhcp-snooping
+	TITLE:=OpenWISP Monitoring DHCP snooping
+	CATEGORY:=Administration
+	SECTION:=admin
+	SUBMENU:=openwisp
+	DEPENDS:=+netjson-monitoring +ucode +ucode-mod-fs +ucode-mod-socket
+	PKGARCH:=all
+	URL:=http://openwisp.org
+endef
+
+define Package/openwisp-monitoring-dhcp-snooping/description
+  Reports the hostname and IP address of the wireless clients of access
+  points which do not run a DHCP server, by snooping their DHCP and ARP traffic.
+endef
+
 define Package/netjson-monitoring/config
 	source "$(SOURCE)/Config.in"
 endef
@@ -125,5 +140,20 @@ define Package/openwisp-monitoring/install
 
 endef
 
+define Package/openwisp-monitoring-dhcp-snooping/install
+	$(INSTALL_DIR) \
+		$(1)/usr/sbin \
+		$(1)/etc/init.d
+
+	$(INSTALL_BIN) \
+		files/dhcp-snooping.uc \
+		$(1)/usr/sbin/openwisp-monitoring-dhcp-snooping
+
+	$(INSTALL_BIN) \
+		files/dhcp-snooping.init \
+		$(1)/etc/init.d/openwisp-monitoring-dhcp-snooping
+endef
+
 $(eval $(call BuildPackage,openwisp-monitoring))
 $(eval $(call BuildPackage,netjson-monitoring))
+$(eval $(call BuildPackage,openwisp-monitoring-dhcp-snooping))

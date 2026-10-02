@@ -51,6 +51,7 @@ sed -i '/routing/d' feeds.conf
 	echo "CONFIG_SIGNED_PACKAGES=y"
 	echo "CONFIG_PACKAGE_netjson-monitoring=y"
 	echo "CONFIG_PACKAGE_openwisp-monitoring=y"
+	echo "CONFIG_PACKAGE_openwisp-monitoring-dhcp-snooping=y"
 } >>.config
 make defconfig
 COMPILE_TARGET=$(grep -E '^CONFIG_TARGET_ARCH_PACKAGES="[^"]+"$' .config | cut -d '"' -f 2)

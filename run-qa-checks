@@ -20,6 +20,7 @@ if [ "$CI" -eq "1" ]; then
 	cp openwisp-monitoring/files/monitoring.agent monitoring_agent
 	cp openwisp-monitoring/files/monitoring.init monitoring_init
 	cp openwisp-monitoring/files/openwisp-monitoring.hotplug monitoring_hotplug
+	cp openwisp-monitoring/files/dhcp-snooping.init dhcp_snooping_init
 else
 	# check scripts formaating
 	shellcheck \
@@ -31,11 +32,13 @@ else
 		./openwisp-monitoring/files/monitoring.init \
 		./openwisp-monitoring/files/monitoring.agent \
 		./openwisp-monitoring/files/netjson-monitoring \
-		./openwisp-monitoring/files/openwisp-monitoring.hotplug
+		./openwisp-monitoring/files/openwisp-monitoring.hotplug \
+		./openwisp-monitoring/files/dhcp-snooping.init
 
 	shfmt -d .
 	shfmt -d openwisp-monitoring/files/monitoring.agent
 	shfmt -d openwisp-monitoring/files/monitoring.init
+	shfmt -d openwisp-monitoring/files/dhcp-snooping.init
 fi
 
 openwisp-qa-check \
